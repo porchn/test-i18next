@@ -10,7 +10,8 @@ class Post extends React.Component {
   render () {
     return (
       <div>
-        {this.t('namespace1:greatMorning')}
+        {/* {this.t('namespace1:greatMorning')} */}
+        test
       </div>
     )
   }

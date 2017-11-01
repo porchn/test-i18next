@@ -12,12 +12,25 @@ const startI18n = (files, lang) => {
     .use(LanguageDetector)
     .use(Cache)
     .init({
-    lng: lang, // active language http://i18next.com/translate/
-    fallbackLng: 'en',
-    resources: files,
-    ns: ['common'],
-    defaultNS: 'common',
-    debug: true
+      lng: lang, // active language http://i18next.com/translate/
+      fallbackLng: 'en',
+      resources: {
+        en:{
+          common:{"hello":"hello good",'morning':'morning','greatMorning':'goodmorning'}
+        },
+        th:{
+          common:{"hello":"สวัสดีครับ",'morning':'ตอนเช้า','greatMorning':'สุดยอดมาก'}
+
+        }
+      },
+      ns: ['common'],
+      defaultNS: 'common',
+      debug: true,
+      detection: {
+        order: ['localStorage'],
+        lookupLocalStorage: 'i18nextLng',
+        caches: ['localStorage']
+      }
   })
 
   return i18n
