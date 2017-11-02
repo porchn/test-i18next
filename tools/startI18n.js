@@ -14,21 +14,13 @@ const startI18n = (files, lang) => {
     .init({
       lng: lang, // active language http://i18next.com/translate/
       fallbackLng: 'en',
-      resources: {
-        en:{
-          common:{"hello":"hello good",'morning':'morning','greatMorning':'goodmorning'}
-        },
-        th:{
-          common:{"hello":"สวัสดีครับ",'morning':'ตอนเช้า','greatMorning':'สุดยอดมาก'}
-
-        }
-      },
+      resources: files,
       ns: ['common'],
       defaultNS: 'common',
       debug: true,
       detection: {
         order: ['localStorage'],
-        lookupLocalStorage: 'i18nextLng',
+        lookupLocalStorage: 'userLng',
         caches: ['localStorage']
       }
   })

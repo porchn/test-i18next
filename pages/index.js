@@ -5,7 +5,6 @@ import { getTranslation } from '../tools/translationHelpers'
 import Title from '../components/Title'
 import Post from '../components/Post'
 
-// get language from query parameter or url path
 function getLanguage(){
   if (global.navigator !== undefined) {
     return global.navigator.languages ? global.navigator.languages[0] : (global.navigator.language || global.navigator.userLanguage) || 'en';
@@ -16,10 +15,7 @@ function getLanguage(){
 
 export default class Homepage extends Component {
   static async getInitialProps () {
-    const translations = await getTranslation(
-      getLanguage(),
-      ['common', 'namespace1']
-    )
+    const translations = await getTranslation(['common', 'namespace1'])
     return { translations }
   }
 
@@ -30,23 +26,7 @@ export default class Homepage extends Component {
   }
 
   componentDidMount(){
-    // console.log(`localStorage : ${localStorage.getItem('userLng')}`)
-    // const newlang = getTranslation(
-    //   'th',
-    //   ['common', 'namespace1']
-    // )
-    // console.log(props.translations)
-    // console.log(newlang)
-    // console.log(this.props.translations);
-    // console.log(getLanguage());
-    const xx=2;
-    const numbers=[1,2,4,5]
-    const doubles = numbers.map(function(num) {
-      return num*xx;
-    });
-
-    console.log(doubles)
-
+    console.log(this.props.translations);
   }
 
   render (props) {
