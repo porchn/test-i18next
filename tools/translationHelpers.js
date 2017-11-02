@@ -14,11 +14,6 @@ export async function getTranslation (files=['common']) {
   let langs=['en','th']
   let baseUrl='http://localhost:3000/static/locales/'
   
-  // for (let file of files) {
-  //   const response = await fetch(`${baseUrl}${lang}/${file}.json`)
-  //   translation[file] = await response.json()
-  // }
-
   for (let lang of langs) {
     const languagefile={}
     for(let file of files){

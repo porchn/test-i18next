@@ -7,29 +7,28 @@ import Cache from 'i18next-localstorage-cache';
  * @param {object} files - Translation files.
  * @param {string} lang - Active language.
  */
-const startI18n = (files) => {
+const startI18n = (files,lang=null) => {
   i18n
     .use(LanguageDetector)
     .use(Cache)
     .init({
+      lng:lang,
       fallbackLng: 'en',
       resources: files,
       ns: ['common'],
       defaultNS: 'common',
       debug: true,
-      detection: {
-        order: ['localStorage'],
-        lookupLocalStorage: 'userLng',
-        caches: ['localStorage']
-      },
+      detection: {},
       saveMissing: true,
       interpolation: {
-        escapeValue: false,
-        formatSeparator: ',',
-        format: (value, format, lng) => {
-          if (format === 'uppercase') return value.toUpperCase();
-          return value;
-        }
+        order: ['querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag'],
+        lookupQuerystring: 'lng',
+        lookupCookie: 'i18next',
+        lookupLocalStorage: 'i18nextLng',
+        caches: ['localStorage', 'cookie'],
+        excludeCacheFor: ['cimode'],
+        cookieMinutes: 10,
+        cookieDomain: 'myDomain'
       }
     })
 

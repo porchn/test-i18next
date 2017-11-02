@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { I18nextProvider } from 'react-i18next'
+import LngDetector from 'i18next-browser-languagedetector';
+
 import startI18n from '../tools/startI18n'
 import { getTranslation } from '../tools/translationHelpers'
 import Title from '../components/Title'
@@ -21,7 +23,6 @@ export default class Homepage extends Component {
 
   constructor (props) {
     super(props)
-    console.log(`constructor : ${getLanguage()}`);
     this.i18n = startI18n(props.translations, getLanguage())
   }
 
